@@ -11,43 +11,23 @@ private float[] precipitation_probability_mean;
 private int[] weathercode;
 
 public LocalDate[] getTime() {
-    return time;
-}
-
-public void setTime(LocalDate[] time) {
-    this.time = time;
+    return time.clone();
 }
 
 public float[] getTemperature_2m_max() {
-    return temperature_2m_max;
-}
-
-public void setTemperature_2m_max(float[] temperature_2m_max) {
-    this.temperature_2m_max = temperature_2m_max;
+    return temperature_2m_max.clone();
 }
 
 public float[] getTemperature_2m_min() {
-    return temperature_2m_min;
-}
-
-public void setTemperature_2m_min(float[] temperature_2m_min) {
-    this.temperature_2m_min = temperature_2m_min;
+    return temperature_2m_min.clone();
 }
 
 public float[] getPrecipitation_probability_mean() {
-    return precipitation_probability_mean;
-}
-
-public void setPrecipitation_probability_mean(float[] precipitation_probability_mean) {
-    this.precipitation_probability_mean = precipitation_probability_mean;
+    return precipitation_probability_mean.clone();
 }
 
 public int[] getWeathercode() {
-    return weathercode;
-}
-
-public void setWeathercode(int[] weathercode) {
-    this.weathercode = weathercode;
+    return weathercode.clone();
 }
 
 @Override

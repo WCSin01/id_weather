@@ -15,75 +15,39 @@ private float[] temperature_2m_max;
 private float[] temperature_2m_min;
 
 public LocalDateTime[] getTime() {
-    return time;
-}
-
-public void setTime(LocalDateTime[] time) {
-    this.time = time;
+    return time.clone();
 }
 
 public float[] getTemperature_2m() {
-    return temperature_2m;
-}
-
-public void setTemperature_2m(float[] temperature_2m) {
-    this.temperature_2m = temperature_2m;
+    return temperature_2m.clone();
 }
 
 public float[] getApparent_temperature() {
-    return apparent_temperature;
-}
-
-public void setApparent_temperature(float[] apparent_temperature) {
-    this.apparent_temperature = apparent_temperature;
+    return apparent_temperature.clone();
 }
 
 public float[] getPrecipitation_probability() {
-    return precipitation_probability;
-}
-
-public void setPrecipitation_probability(float[] precipitation_probability) {
-    this.precipitation_probability = precipitation_probability;
+    return precipitation_probability.clone();
 }
 
 public int[] getWeathercode() {
-    return weathercode;
-}
-
-public void setWeathercode(int[] weathercode) {
-    this.weathercode = weathercode;
+    return weathercode.clone();
 }
 
 public float[] getSnow_depth() {
-    return snow_depth;
-}
-
-public void setSnow_depth(float[] snow_depth) {
-    this.snow_depth = snow_depth;
+    return snow_depth.clone();
 }
 
 public int[] getIs_day() {
-    return is_day;
-}
-
-public void setIs_day(int[] is_day) {
-    this.is_day = is_day;
+    return is_day.clone();
 }
 
 public float[] getTemperature_2m_max() {
-    return temperature_2m_max;
-}
-
-public void setTemperature_2m_max(float[] temperature_2m_max) {
-    this.temperature_2m_max = temperature_2m_max;
+    return temperature_2m_max.clone();
 }
 
 public float[] getTemperature_2m_min() {
-    return temperature_2m_min;
-}
-
-public void setTemperature_2m_min(float[] temperature_2m_min) {
-    this.temperature_2m_min = temperature_2m_min;
+    return temperature_2m_min.clone();
 }
 
 @Override

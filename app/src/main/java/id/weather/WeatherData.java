@@ -8,16 +8,8 @@ public HourlyWeatherData getHourly() {
     return hourly;
 }
 
-public void setHourly(HourlyWeatherData hourly) {
-    this.hourly = hourly;
-}
-
 public DailyWeatherData getDaily() {
     return daily;
-}
-
-public void setDaily(DailyWeatherData daily) {
-    this.daily = daily;
 }
 
 @Override

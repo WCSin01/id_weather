@@ -1,5 +1,5 @@
 package id.weather;
 
 public interface IObserver {
-    void update();
+    void update(WeatherData weatherData);
 }

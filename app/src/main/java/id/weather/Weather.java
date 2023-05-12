@@ -1,6 +1,7 @@
 package id.weather;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 public class Weather {
@@ -14,11 +15,18 @@ public class Weather {
         this.observers.remove(observer);
     }
 
-    public void updateWeather() {
-        Future<WeatherData> weatherData = WeatherApi.updateWeatherData();
-        // todo
-        for (IObserver o: observers) {
-            o.update();
+    // call method in a separate thread
+    public void updateWeather() throws InterruptedException, ExecutionException {
+        while (true) {
+            Future<WeatherData> weatherDataFuture = WeatherApi.updateWeatherData();
+            while (!weatherDataFuture.isDone()) {
+                Thread.sleep(100);
+            }
+            WeatherData weatherData = weatherDataFuture.get();
+            for (IObserver o: observers) {
+                o.update(weatherData);
+            }
+            Thread.sleep(2*60*1000); // 2 min
         }
     }
 }

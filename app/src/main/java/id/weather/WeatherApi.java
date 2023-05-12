@@ -32,8 +32,6 @@ private static final OkHttpClient client = new OkHttpClient();
 private WeatherApi() {}
 public static Future<WeatherData> updateWeatherData() {
     LocalDate dateToday = LocalDate.now();
-    String today = dateToday.toString();
-    String weekLater = dateToday.plusWeeks(1).toString();
     CompletableFuture<WeatherData> weatherDataFuture = new CompletableFuture<>();
 
     Request request = new Request.Builder()
@@ -41,8 +39,8 @@ public static Future<WeatherData> updateWeatherData() {
             "latitude=52.20&longitude=0.12&" +
             "hourly=temperature_2m,apparent_temperature,precipitation_probability,weathercode,snow_depth,is_day&" +
             "daily=temperature_2m_max,temperature_2m_min,precipitation_probability_mean,weathercode&" +
-            "start_date=" + today +
-            "&end_date=" + weekLater +
+            "start_date=" + dateToday.toString() +
+            "&end_date=" + dateToday.plusWeeks(1).toString() +
             "&timezone=Europe%2FLondon")
             .build();
     Call call = client.newCall(request);

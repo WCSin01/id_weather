@@ -1,6 +1,7 @@
 package id.weather;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -8,21 +9,19 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 public class Weather {
-    List<IObserver> observers;
+    HashSet<IObserver> observers;
 
     public Weather() {
-        this.observers = new ArrayList<>();
+        this.observers = new HashSet<>();
     }
 
-    public void attach(IObserver observer) {
-        this.observers.add(observer);
-    }
-    public void attach(List<IObserver> observers) { this.observers.addAll(observers); }
+    public void attach(IObserver observer) { this.observers.add(observer); }
+    public void attach(HashSet<IObserver> observers) { this.observers.addAll(observers); }
 
     public void detach(IObserver observer) {
         this.observers.remove(observer);
     }
-    public void detach(List<IObserver> observers) { this.observers.removeAll(observers); }
+    public void detach(HashSet<IObserver> observers) { this.observers.removeAll(observers); }
 
     // call method in a separate thread
     public void updateWeather() throws InterruptedException, ExecutionException {

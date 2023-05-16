@@ -20,6 +20,8 @@ private static Map<Integer, String> weathercodeToText = ImmutableMap.<Integer, S
         .put(61, "rain")
         .put(62, "rain")
         .put(65, "heavy rain")
+        .put(66, "freezing rain")
+        .put(67, "freezing rain")
         .put(71, "light snow")
         .put(73, "moderate snow")
         .put(75, "heavy snow")
@@ -32,8 +34,6 @@ private static Map<Integer, String> weathercodeToText = ImmutableMap.<Integer, S
         .put(48, "Not supported")
         .put(56, "Not supported")
         .put(47, "Not supported")
-        .put(66, "Not supported")
-        .put(67, "Not supported")
         .put(77, "Not supported")
         .build();
 
@@ -50,6 +50,8 @@ private static Map<Integer, String> weathercodeToIcon = ImmutableMap.<Integer, S
         .put(61, "rain")
         .put(62, "rain")
         .put(65, "heavy rain")
+        .put(66, "freezing rain")
+        .put(67, "freezing rain")
         .put(71, "light snow")
         .put(73, "moderate snow")
         .put(75, "heavy snow")
@@ -62,8 +64,6 @@ private static Map<Integer, String> weathercodeToIcon = ImmutableMap.<Integer, S
         .put(48, "Not supported")
         .put(56, "Not supported")
         .put(47, "Not supported")
-        .put(66, "Not supported")
-        .put(67, "Not supported")
         .put(77, "Not supported")
         .build();
 

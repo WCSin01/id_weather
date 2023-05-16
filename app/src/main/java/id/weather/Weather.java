@@ -9,10 +9,19 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 public class Weather {
+    Weather instance;
     HashSet<IObserver> observers;
 
-    public Weather() {
+    private Weather() {
         this.observers = new HashSet<>();
+    }
+
+    public Weather getInstance() {
+        if (this.instance == null) {
+        return new Weather();
+        } else {
+            return instance;
+        }
     }
 
     public void attach(IObserver observer) { this.observers.add(observer); }

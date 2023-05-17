@@ -1,20 +1,21 @@
 package id.weather;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.widget.ImageView;
+import android.os.Handler;
+import android.os.Looper;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-
 @Override
 protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+    Handler mainHandler = new Handler(Looper.getMainLooper());
 
-    // todo: to pass into WeatherApi what to update
+    Weather weather = Weather.getInstance();
+    ObserverExample observerExample = new ObserverExample(mainHandler, this);
+    weather.attach(observerExample);
+    weather.updateWeather();
 }
 }

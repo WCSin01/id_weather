@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.os.Looper;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -33,5 +34,17 @@ public class MainActivity extends AppCompatActivity {
         ObserverExample observerExample = new ObserverExample(mainHandler, this);
         weather.attach(observerExample);
         weather.updateWeather();
+      
+        // Find the RecyclerView and set it's adaptor to the RecyclerViewAdaptor
+
+        // Finding RecyclerViews
+        RecyclerView todayRecyclerView = (RecyclerView) findViewById(R.id.todayRecycler);
+
+        // Creating the adaptor instances
+        RecyclerViewAdaptor todayAdaptor = new RecyclerViewAdaptor(weather);
+
+        // Setting RecyclerView adaptors
+        todayRecyclerView.setAdapter(todayAdaptor);
+      
     }
 }

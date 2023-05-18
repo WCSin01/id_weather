@@ -1,5 +1,7 @@
 package id.weather;
 
+import java.time.LocalDateTime;
+
 public class WeatherData {
 private boolean isSuccess;
 private HourlyWeatherData hourly;
@@ -22,6 +24,8 @@ public HourlyWeatherData getHourly() {
 public DailyWeatherData getDaily() {
     return daily;
 }
+
+public int GetCurrentHour() { return LocalDateTime.now().getHour(); }
 
 @Override
 public String toString() {

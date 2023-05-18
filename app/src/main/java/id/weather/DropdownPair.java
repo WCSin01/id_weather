@@ -59,7 +59,6 @@ public class DropdownPair {
 
             ViewGroup.LayoutParams closedParams = closedLayout.getLayoutParams();
             closedParams.height = currentClosedHeight + currentOpenHeight - val;
-            System.out.println(val);
             closedLayout.setLayoutParams(closedParams);
         });
 

@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
         Handler mainHandler = new Handler(Looper.getMainLooper());
 
         Weather weather = Weather.getInstance();
-        ObserverExample observerExample = new ObserverExample(mainHandler, this);
-        weather.attach(observerExample);
+        MainInterface mainInterface = new MainInterface(findViewById(R.id.mainIcon), mainHandler);
+        weather.attach(mainInterface);
         weather.updateWeather();
     }
 }

@@ -1,42 +1,51 @@
 package id.weather;
 
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.HashSet;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 public class Weather {
-    HashSet<IObserver> observers;
+private static Weather instance;
+private static HashSet<IObserver> observers;
 
-    public Weather() {
-        this.observers = new HashSet<>();
+private Weather() {
+    observers = new HashSet<>();
+}
+
+public static Weather getInstance() {
+    if (instance == null) {
+        instance = new Weather();
     }
+    return instance;
+}
 
-    public void attach(IObserver observer) { this.observers.add(observer); }
-    public void attach(HashSet<IObserver> observers) { this.observers.addAll(observers); }
+public void attach(IObserver observer) {
+    observers.add(observer);
+}
 
-    public void detach(IObserver observer) {
-        this.observers.remove(observer);
-    }
-    public void detach(HashSet<IObserver> observers) { this.observers.removeAll(observers); }
+public void detach(IObserver observer) {
+    observers.remove(observer);
+}
 
-    // call method in a separate thread
-    public void updateWeather() throws InterruptedException, ExecutionException {
+public void updateWeather() {
+    new Thread(() -> {
         while (true) {
-            Future<WeatherData> weatherDataFuture = WeatherApi.updateWeatherData();
             try {
-                WeatherData weatherData = weatherDataFuture.get(10L, TimeUnit.SECONDS);
+                WeatherData weatherData = WeatherApi.updateWeatherData();
                 for (IObserver o : observers) {
                     o.update(weatherData);
                 }
-            } catch (TimeoutException e) {
-                // todo: handle exception
-            } finally {
-                Thread.sleep(2*60*1000); // 2 min
+            } catch (IOException e) {
+                for (IObserver o : observers) {
+                    WeatherData unsuccessful = new WeatherData(false);
+                    o.update(unsuccessful);
+                }
+            }
+            try {
+                Thread.sleep(2 * 60 * 1000); // 2 min
+            } catch (InterruptedException e) {
+                // unhandled
             }
         }
-    }
+    }).start();
+}
 }

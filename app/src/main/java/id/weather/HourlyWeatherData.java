@@ -14,40 +14,45 @@ private int[] is_day;
 private float[] temperature_2m_max;
 private float[] temperature_2m_min;
 
-public LocalDateTime[] getTime() {
-    return time.clone();
+public LocalDateTime getTime(int idx) {
+    return time[idx];
 }
 
-public float[] getTemperature_2m() {
-    return temperature_2m.clone();
+public float getTemperature_2m(int idx) {
+    return temperature_2m[idx];
 }
 
-public float[] getApparent_temperature() {
-    return apparent_temperature.clone();
+public float getApparent_temperature(int idx) {
+    return apparent_temperature[idx];
 }
 
-public float[] getPrecipitation_probability() {
-    return precipitation_probability.clone();
+public float getPrecipitation_probability(int idx) {
+    return precipitation_probability[idx];
 }
 
-public int[] getWeathercode() {
-    return weathercode.clone();
+public int getWeathercode(int idx) {
+    return weathercode[idx];
 }
 
-public float[] getSnow_depth() {
-    return snow_depth.clone();
+public float getSnow_depth(int idx) {
+    return snow_depth[idx];
 }
 
-public int[] getIs_day() {
-    return is_day.clone();
+public boolean getIs_day(int idx) {
+    if (is_day[idx] == 1) {
+        return true;
+    } else if (is_day[idx] == 0) {
+        return false;
+    }
+    throw new ArrayStoreException("Data corrupted");
 }
 
-public float[] getTemperature_2m_max() {
-    return temperature_2m_max.clone();
+public float getTemperature_2m_max(int idx) {
+    return temperature_2m_max[idx];
 }
 
-public float[] getTemperature_2m_min() {
-    return temperature_2m_min.clone();
+public float getTemperature_2m_min(int idx) {
+    return temperature_2m_min[idx];
 }
 
 @Override

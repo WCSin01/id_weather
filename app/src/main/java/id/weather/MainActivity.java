@@ -3,11 +3,12 @@ package id.weather;
 import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.os.Handler;
+import android.os.Looper;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,5 +26,12 @@ public class MainActivity extends AppCompatActivity {
 
         Button weeklyButton = findViewById(R.id.weeklyButton);
         weeklyButton.setOnClickListener(v -> dropdowns.toggle(300));
+  
+        Handler mainHandler = new Handler(Looper.getMainLooper());
+
+        Weather weather = Weather.getInstance();
+        ObserverExample observerExample = new ObserverExample(mainHandler, this);
+        weather.attach(observerExample);
+        weather.updateWeather();
     }
 }

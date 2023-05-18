@@ -15,9 +15,7 @@ public WeatherData(boolean isSuccess) {
     this.isSuccess = false;
 }
 
-public boolean getIsSuccess() {
-    return isSuccess;
-}
+public boolean getIsSuccess() { return isSuccess; }
 
 public HourlyWeatherData getHourly() {
     return hourly;

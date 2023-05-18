@@ -1,14 +1,10 @@
 package id.weather;
 
-
-import android.widget.ImageView;
-
 import com.google.common.collect.ImmutableMap;
+
 import java.util.Map;
 
 public class Weathercode {
-private Weathercode() {}
-
 // simplified
 private static final Map<Integer, String> weathercodeToText = ImmutableMap.<Integer, String>builder()
         .put(0, "clear")
@@ -38,7 +34,6 @@ private static final Map<Integer, String> weathercodeToText = ImmutableMap.<Inte
         .put(47, "Not supported")
         .put(77, "Not supported")
         .build();
-
 // To use:
 //  ImageView weather_icon = findViewById(R.id.weather_icon);
 //  weather_icon.setImageResource(R.drawable.clear);
@@ -70,6 +65,37 @@ private static final Map<Integer, Integer> weathercodeToIcon = ImmutableMap.<Int
         .put(47, R.drawable.transparent)
         .put(77, R.drawable.transparent)
         .build();
+private static final Map<Integer, Integer> weatherToBackground = ImmutableMap.<Integer, Integer>builder()
+        .put(0, R.drawable.clear_background)
+        .put(1, R.drawable.clear_background)
+        .put(2, R.drawable.clear_background)
+        .put(3, R.drawable.clear_background)
+        .put(45, R.drawable.fog_background)
+        .put(51, R.drawable.rain_background)
+        .put(53, R.drawable.rain_background)
+        .put(55, R.drawable.rain_background)
+        .put(61, R.drawable.rain_background)
+        .put(62, R.drawable.rain_background)
+        .put(65, R.drawable.rain_background)
+        .put(66, R.drawable.rain_background)
+        .put(67, R.drawable.rain_background)
+        .put(71, R.drawable.snow_background)
+        .put(73, R.drawable.snow_background)
+        .put(75, R.drawable.snow_background)
+        .put(80, R.drawable.rain_background)
+        .put(81, R.drawable.rain_background)
+        .put(82, R.drawable.rain_background)
+        .put(85, R.drawable.snow_background)
+        .put(86, R.drawable.snow_background)
+        .put(95, R.drawable.thunderstorm_background)
+        .put(48, R.drawable.transparent)
+        .put(56, R.drawable.transparent)
+        .put(47, R.drawable.transparent)
+        .put(77, R.drawable.transparent)
+        .build();
+
+private Weathercode() {
+}
 
 public static String toText(int weathercode) {
     return weathercodeToText.get(weathercode);
@@ -84,5 +110,16 @@ public static int toIcon(int weathercode, int is_day) {
         }
     }
     return weathercodeToIcon.get(weathercode);
+}
+
+public static int toBackground(int weathercode, int is_day) {
+    if (is_day == 0) {
+        if (weathercode == 0 || weathercode == 1) {
+            return R.drawable.night_background;
+        } else if (weathercode == 2) {
+            return R.drawable.night_background;
+        }
+    }
+    return weatherToBackground.get(weathercode);
 }
 }

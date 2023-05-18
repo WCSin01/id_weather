@@ -10,24 +10,24 @@ private float[] temperature_2m_min;
 private float[] precipitation_probability_mean;
 private int[] weathercode;
 
-public LocalDate[] getTime() {
-    return time.clone();
+public LocalDate getDay(int idx) {
+    return time[idx];
 }
 
-public float[] getTemperature_2m_max() {
-    return temperature_2m_max.clone();
+public float getTemperature_2m_max(int idx) {
+    return temperature_2m_max[idx];
 }
 
-public float[] getTemperature_2m_min() {
-    return temperature_2m_min.clone();
+public float getTemperature_2m_min(int idx) {
+    return temperature_2m_min[idx];
 }
 
-public float[] getPrecipitation_probability_mean() {
-    return precipitation_probability_mean.clone();
+public float getPrecipitation_probability_mean(int idx) {
+    return precipitation_probability_mean[idx];
 }
 
-public int[] getWeathercode() {
-    return weathercode.clone();
+public int getWeathercode(int idx) {
+    return weathercode[idx];
 }
 
 @Override

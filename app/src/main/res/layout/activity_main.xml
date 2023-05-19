@@ -72,45 +72,41 @@
                     android:layout_marginTop="32dp"
                     android:layout_marginEnd="32dp"
                     android:layout_marginBottom="32dp"
-                    android:text="__°C"
                     app:layout_constraintBottom_toTopOf="@+id/SplitLine_hor1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:id="@+id/highTemp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="36dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="36dp"
-                    android:text="H: __°C"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/SplitLine_hor1" />
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/lowTemp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="36dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="36dp"
                     android:layout_marginBottom="20dp"
-                    android:text="L: __°C"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.571"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView3" />
+                    app:layout_constraintTop_toBottomOf="@+id/highTemp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:id="@+id/currentWeather"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Current weather"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/mainIcon"
                 app:layout_constraintStart_toStartOf="@+id/mainIcon" />

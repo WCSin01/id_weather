@@ -1,7 +1,6 @@
 package id.weather;
 
 import android.os.Handler;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -32,7 +31,6 @@ public class MainInterface implements IObserver {
                 t = i;
             }
         }
-        Log.d("DEBUG", Integer.toString(t));
         return t; // Note: a returned value of 24 means no rain in next 24hrs
     }
 

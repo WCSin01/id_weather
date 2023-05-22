@@ -39,10 +39,10 @@ public class MainActivity extends AppCompatActivity {
 
         // set listeners on buttons to run the animation when pressed
         Button settingsButton = findViewById(R.id.settingsButton);
-        settingsButton.setOnClickListener(v -> settingsDropdown.toggle(400));
+        settingsButton.setOnClickListener(v -> settingsDropdown.toggle(500));
 
         Button mainButton = findViewById(R.id.mainButton);
-        mainButton.setOnClickListener(v -> settingsDropdown.toggle(400));
+        mainButton.setOnClickListener(v -> settingsDropdown.toggle(500));
   
         Handler mainHandler = new Handler(Looper.getMainLooper());
 
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         thisWeekRecyclerView.setAdapter(thisWeekAdaptor);
 
         // don't load app until data is ready
-        View content = findViewById(R.id.mainLayout);
+        View content = findViewById(R.id.content);
         content.getViewTreeObserver().addOnPreDrawListener(mainInterface);
 
         weather.updateWeather();

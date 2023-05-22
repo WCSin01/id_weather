@@ -105,8 +105,8 @@ public static String toText(int weathercode) {
     return weathercodeToText.get(weathercode);
 }
 
-public static int toIcon(int weathercode, int is_day) {
-    if (is_day == 0) {
+public static int toIcon(int weathercode, boolean is_day) {
+    if (!is_day) {
         if (weathercode == 0 || weathercode == 1) {
             return R.drawable.clear_night;
         } else if (weathercode == 2) {
@@ -116,8 +116,8 @@ public static int toIcon(int weathercode, int is_day) {
     return weathercodeToIcon.get(weathercode);
 }
 
-public static int toBackground(int weathercode, int is_day) {
-    if (is_day == 0) {
+public static int toBackground(int weathercode, boolean is_day) {
+    if (!is_day) {
         if (weathercode == 0 || weathercode == 1) {
             return R.drawable.night_background;
         } else if (weathercode == 2) {

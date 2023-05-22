@@ -25,8 +25,8 @@ public void update(WeatherData weatherData) {
             System.out.println(weatherData);
             int currentWeather = weatherData.getDaily().getWeathercode(0);
             txt.setText(Weathercode.toText(currentWeather));
-            weather_icon.setImageResource(Weathercode.toIcon(currentWeather, 1));
-            view.setBackgroundResource(Weathercode.toBackground(currentWeather, 1));
+            weather_icon.setImageResource(Weathercode.toIcon(currentWeather, true));
+            view.setBackgroundResource(Weathercode.toBackground(currentWeather, true));
             // if hourly: weatherData.getHourly().getIs_day(...)
         } else {
             txt.setText("Failed to retrieve data");

@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class RecyclerViewAdaptor extends RecyclerView.Adapter<RecyclerViewViewHolder> {
+public class RecyclerViewAdaptorDaily extends RecyclerView.Adapter<RecyclerViewViewHolderDaily> {
 
     private Handler handler;
 
@@ -16,7 +16,7 @@ public class RecyclerViewAdaptor extends RecyclerView.Adapter<RecyclerViewViewHo
 
     private final Weather weather;
 
-    public RecyclerViewAdaptor(Weather weather, Handler handler) {
+    public RecyclerViewAdaptorDaily(Weather weather, Handler handler) {
 
         this.handler = handler;
         this.weather = weather;
@@ -25,12 +25,12 @@ public class RecyclerViewAdaptor extends RecyclerView.Adapter<RecyclerViewViewHo
 
     @NonNull
     @Override
-    public RecyclerViewViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecyclerViewViewHolderDaily onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.weather_row_item, parent, false);
 
-        RecyclerViewViewHolder holder = new RecyclerViewViewHolder(v, 0, handler);
+        RecyclerViewViewHolderDaily holder = new RecyclerViewViewHolderDaily(v, 0, handler);
 
         weather.attach(holder);
 
@@ -39,7 +39,7 @@ public class RecyclerViewAdaptor extends RecyclerView.Adapter<RecyclerViewViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerViewViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerViewViewHolderDaily holder, int position) {
 
         holder.setIndex(position);
 

@@ -25,7 +25,7 @@ public DailyWeatherData getDaily() {
     return daily;
 }
 
-public int GetCurrentHour() { return LocalDateTime.now().getHour(); }
+public int getCurrentHour() { return LocalDateTime.now().getHour(); }
 
 @Override
 public String toString() {

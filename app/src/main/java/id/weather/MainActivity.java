@@ -1,6 +1,7 @@
 package id.weather;
 
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.os.Handler;
@@ -46,18 +47,28 @@ public class MainActivity extends AppCompatActivity {
         Handler mainHandler = new Handler(Looper.getMainLooper());
 
         Weather weather = Weather.getInstance();
-        weather.updateWeather();
+        MainInterface mainInterface = new MainInterface(findViewById(R.id.mainIcon), findViewById(R.id.currentWeather), findViewById(R.id.currentTemp), findViewById(R.id.highTemp), findViewById(R.id.lowTemp), findViewById(R.id.rainChance), mainHandler);
+        weather.attach(mainInterface);
+
       
         // Find the RecyclerView and set it's adaptor to the RecyclerViewAdaptor
 
         // Finding RecyclerViews
         RecyclerView todayRecyclerView = (RecyclerView) findViewById(R.id.todayRecycler);
+        RecyclerView thisWeekRecyclerView = (RecyclerView) findViewById(R.id.thisWeekRecycler);
 
         // Creating the adaptor instances
-        RecyclerViewAdaptor todayAdaptor = new RecyclerViewAdaptor(weather);
+        RecyclerViewAdaptor todayAdaptor = new RecyclerViewAdaptor(weather, new Handler(Looper.getMainLooper()));
+        RecyclerViewAdaptorDaily thisWeekAdaptor = new RecyclerViewAdaptorDaily(weather, new Handler(Looper.getMainLooper()));
 
         // Setting RecyclerView adaptors
         todayRecyclerView.setAdapter(todayAdaptor);
-      
+        thisWeekRecyclerView.setAdapter(thisWeekAdaptor);
+
+        // don't load app until data is ready
+        View content = findViewById(R.id.mainLayout);
+        content.getViewTreeObserver().addOnPreDrawListener(mainInterface);
+
+        weather.updateWeather();
     }
 }

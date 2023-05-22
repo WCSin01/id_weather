@@ -1,25 +1,46 @@
 package id.weather;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class RecyclerViewViewHolder extends RecyclerView.ViewHolder implements IObserver {
 
-    private int index;
+    protected Handler handler;
 
-    private final TextView textView;
+    protected int index;
 
-    public RecyclerViewViewHolder(@NonNull View itemView, int index) {
+    protected final TextView timeLabel;
+    protected final TextView temperatureLabel;
+    protected final ImageView weatherImage;
+
+    public RecyclerViewViewHolder(@NonNull View itemView, int index, Handler handler) {
 
         super(itemView);
 
+        this.handler = handler;
         this.index = index;
 
-        textView = (TextView) itemView.findViewById(R.id.item_text_view);
+        timeLabel = itemView.findViewById(R.id.time_label);
+        temperatureLabel = itemView.findViewById(R.id.temperature_label);
+        weatherImage = itemView.findViewById(R.id.weather_image);
+
+    }
+
+    protected void setDetails(int hour, float temperature, int weathercode) {
+
+        timeLabel.setText(String.format("%d : 00", hour)); // Set time label time
+        temperatureLabel.setText(String.format("%.1f °C", temperature));
+        weatherImage.setImageResource(Weathercode.toIcon(weathercode, 1));
+
 
     }
 
@@ -27,15 +48,23 @@ public class RecyclerViewViewHolder extends RecyclerView.ViewHolder implements I
 
         this.index = index;
 
-        textView.setText("Item " + index); // TODO - this line is temporary, just for testing. Delete once we're done testing it
-        Log.d("debugstuff", "Item " + index + " created");
     }
 
     @Override
     public void update(WeatherData weatherData) {
-        // TODO
-    }
 
-    // TODO
+        if (weatherData.getIsSuccess()) {
+
+            int baseHour = LocalDateTime.now().getHour();
+            int hour = baseHour + index;
+
+            int weathercode = weatherData.getHourly().getWeathercode(hour);
+            float temperature = weatherData.getHourly().getTemperature_2m(hour);
+
+            handler.post(() -> setDetails(hour, temperature, weathercode));
+
+        }
+
+    }
 
 }

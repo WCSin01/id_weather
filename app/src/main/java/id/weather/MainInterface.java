@@ -1,10 +1,11 @@
 package id.weather;
 
 import android.os.Handler;
+import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MainInterface implements IObserver {
+public class MainInterface implements IObserver, ViewTreeObserver.OnPreDrawListener {
     private final ImageView img;
     private final TextView currentTempTxt;
     private final TextView currentWeatherTxt;
@@ -12,6 +13,7 @@ public class MainInterface implements IObserver {
     private final TextView lowTempTxt;
     private final TextView rainChanceTxt;
     private final Handler handler;
+    private boolean hasLoaded;
 
     public MainInterface(ImageView img, TextView currentWeatherTxt, TextView currentTempTxt, TextView highTempTxt, TextView lowTempTxt, TextView rainChanceTxt, Handler handler) {
         this.img = img;
@@ -22,6 +24,8 @@ public class MainInterface implements IObserver {
         this.rainChanceTxt = rainChanceTxt;
 
         this.handler = handler;
+
+        hasLoaded = false;
     }
 
     private int nextPrecipTime(WeatherData weatherData) {
@@ -61,7 +65,13 @@ public class MainInterface implements IObserver {
                     rainChanceTxt.setText("No rain expected soon!");
                 }
                 // if hourly: weatherData.getHourly().getIs_day(...)
+                hasLoaded = true;
             }
         });
+    }
+
+    @Override
+    public boolean onPreDraw() {
+        return hasLoaded;
     }
 }

@@ -1,6 +1,7 @@
 package id.weather;
 
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.os.Handler;
@@ -45,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
 
         // Setting RecyclerView adaptors
         todayRecyclerView.setAdapter(todayAdaptor);
-      
+
+        // don't load app until data is ready
+        View content = findViewById(R.id.mainLayout);
+        content.getViewTreeObserver().addOnPreDrawListener(mainInterface);
     }
 }

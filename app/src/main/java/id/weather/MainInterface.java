@@ -1,6 +1,7 @@
 package id.weather;
 
 import android.os.Handler;
+import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,9 +14,11 @@ public class MainInterface implements IObserver, ViewTreeObserver.OnPreDrawListe
     private final TextView lowTempTxt;
     private final TextView rainChanceTxt;
     private final Handler handler;
+    private final View background;
     private boolean hasLoaded;
 
-    public MainInterface(ImageView img, TextView currentWeatherTxt, TextView currentTempTxt, TextView highTempTxt, TextView lowTempTxt, TextView rainChanceTxt, Handler handler) {
+    public MainInterface(View background, ImageView img, TextView currentWeatherTxt, TextView currentTempTxt, TextView highTempTxt, TextView lowTempTxt, TextView rainChanceTxt, Handler handler) {
+        this.background = background;
         this.img = img;
         this.currentTempTxt = currentTempTxt;
         this.currentWeatherTxt = currentWeatherTxt;
@@ -49,7 +52,7 @@ public class MainInterface implements IObserver, ViewTreeObserver.OnPreDrawListe
                 int nextPrecip = nextPrecipTime(weatherData);
 
                 int currentWeather = weatherData.getHourly().getWeathercode(currentTime);
-                img.setImageResource(Weathercode.toIcon(currentWeather, 1));
+                img.setImageResource(Weathercode.toIcon(currentWeather, true));
                 currentWeatherTxt.setText(Weathercode.toText(currentWeather));
                 currentTempTxt.setText(String.format("%s°C", weatherData.getHourly().getTemperature_2m(currentTime)));
                 highTempTxt.setText(String.format("H: %s°C", weatherData.getDaily().getTemperature_2m_max(0)));
@@ -66,6 +69,10 @@ public class MainInterface implements IObserver, ViewTreeObserver.OnPreDrawListe
                 }
                 // if hourly: weatherData.getHourly().getIs_day(...)
                 hasLoaded = true;
+                background.setBackgroundResource(Weathercode.toBackground(currentWeather, true));
+            }
+            else {
+                background.setBackgroundResource(R.drawable.clear_background);
             }
         });
     }

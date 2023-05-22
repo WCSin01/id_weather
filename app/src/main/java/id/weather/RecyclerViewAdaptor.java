@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class RecyclerViewAdaptor extends RecyclerView.Adapter<RecyclerViewViewHolder> {
-
     private Handler handler;
 
     private static final int itemCount = 7;

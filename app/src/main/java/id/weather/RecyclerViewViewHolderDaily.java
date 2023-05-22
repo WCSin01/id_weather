@@ -21,7 +21,7 @@ public class RecyclerViewViewHolderDaily extends RecyclerViewViewHolder {
 
         timeLabel.setText(dt.format(DateTimeFormatter.ofPattern("dd/MM"))); // Set time label time
         temperatureLabel.setText(String.format("%.1f/%.1f °C", temperature_min, temperature_max));
-        weatherImage.setImageResource(Weathercode.toIcon(weathercode, 1));
+        weatherImage.setImageResource(Weathercode.toIcon(weathercode, true));
 
     }
 

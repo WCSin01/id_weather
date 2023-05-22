@@ -33,18 +33,22 @@ public class MainActivity extends AppCompatActivity {
         Weather weather = Weather.getInstance();
         ObserverExample observerExample = new ObserverExample(mainHandler, this);
         weather.attach(observerExample);
-        weather.updateWeather();
       
         // Find the RecyclerView and set it's adaptor to the RecyclerViewAdaptor
 
         // Finding RecyclerViews
         RecyclerView todayRecyclerView = (RecyclerView) findViewById(R.id.todayRecycler);
+        RecyclerView thisWeekRecyclerView = (RecyclerView) findViewById(R.id.thisWeekRecycler);
 
         // Creating the adaptor instances
-        RecyclerViewAdaptor todayAdaptor = new RecyclerViewAdaptor(weather);
+        RecyclerViewAdaptor todayAdaptor = new RecyclerViewAdaptor(weather, new Handler(Looper.getMainLooper()));
+        RecyclerViewAdaptorDaily thisWeekAdaptor = new RecyclerViewAdaptorDaily(weather, new Handler(Looper.getMainLooper()));
 
         // Setting RecyclerView adaptors
         todayRecyclerView.setAdapter(todayAdaptor);
+        thisWeekRecyclerView.setAdapter(thisWeekAdaptor);
+
+        weather.updateWeather();
       
     }
 }

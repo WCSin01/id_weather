@@ -37,7 +37,7 @@ public class RecyclerViewViewHolder extends RecyclerView.ViewHolder implements I
 
     protected void setDetails(int hour, float temperature, int weathercode) {
 
-        timeLabel.setText(String.format("%d : 00", hour)); // Set time label time
+        timeLabel.setText(String.format("%02d : 00", hour % 24)); // Set time label time
         temperatureLabel.setText(String.format("%.1f °C", temperature));
         weatherImage.setImageResource(Weathercode.toIcon(weathercode, true));
 

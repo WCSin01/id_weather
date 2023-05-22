@@ -59,11 +59,9 @@ public class MainInterface implements IObserver, ViewTreeObserver.OnPreDrawListe
                 lowTempTxt.setText(String.format("L: %s°C", weatherData.getDaily().getTemperature_2m_min(0)));
 
                 if (nextPrecip < currentTime + 24) {
-                    int nextTime = nextPrecip;
-                    if (nextTime >= 24) {
-                        nextTime -= 24;
-                    }
-                    rainChanceTxt.setText(String.format("%s%% chance of rain at %s:00", Math.round(weatherData.getHourly().getPrecipitation_probability(nextPrecip)), nextTime));
+                    rainChanceTxt.setText(String.format("%s%% chance of rain at %s:00",
+                            Math.round(weatherData.getHourly().getPrecipitation_probability(nextPrecip)),
+                            nextPrecip % 24));
                 } else {
                     rainChanceTxt.setText("No rain expected soon!");
                 }

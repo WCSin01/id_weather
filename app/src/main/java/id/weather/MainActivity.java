@@ -50,15 +50,12 @@ public class MainActivity extends AppCompatActivity {
 
         // Setting RecyclerView adaptors
         todayRecyclerView.setAdapter(todayAdaptor);
+        thisWeekRecyclerView.setAdapter(thisWeekAdaptor);
 
         // don't load app until data is ready
         View content = findViewById(R.id.mainLayout);
         content.getViewTreeObserver().addOnPreDrawListener(mainInterface);
 
-        /*
-        thisWeekRecyclerView.setAdapter(thisWeekAdaptor);
-
         weather.updateWeather();
-        */
     }
 }

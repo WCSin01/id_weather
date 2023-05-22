@@ -15,6 +15,7 @@
             android:id="@+id/settingsLayout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:background="#48CC23"
             tools:visibility="visible">
 
             <Button
@@ -191,42 +192,62 @@
                 <LinearLayout
                     android:id="@+id/dailyLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="297dp"
-                    android:background="#1AC4D6"
+                    android:layout_height="321dp"
+                    android:background="@drawable/rounded_rect"
+                    android:backgroundTint="#2962A8"
+                    android:backgroundTintMode="add"
                     android:orientation="vertical">
 
                     <Button
                         android:id="@+id/dailyButton"
+                        style="@style/Widget.Material3.ExtendedFloatingActionButton.Icon.Primary"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Button" />
+                        android:layout_height="50dp"
+                        android:backgroundTint="#138CDD"
+                        android:backgroundTintMode="add"
+                        android:outlineProvider="none"
+                        android:text="Today"
+                        android:textAlignment="viewStart"
+                        android:textColor="#FFFFFF"
+                        android:textColorHighlight="#FFFFFF"
+                        android:textColorLink="#FFFFFF"
+                        app:strokeColor="#2962A8"
+                        app:strokeWidth="2dp" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/todayRecycler"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="361dp"
+                        android:layout_height="268dp"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/weeklyLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="66dp"
+                    android:layout_height="50dp"
                     android:layout_alignParentBottom="true"
                     android:layout_marginBottom="0dp"
-                    android:background="#D82121"
+                    android:background="@drawable/rounded_rect"
+                    android:backgroundTint="#7E3131"
+                    android:backgroundTintMode="add"
                     android:orientation="vertical">
 
                     <Button
                         android:id="@+id/weeklyButton"
+                        style="@style/Widget.Material3.ExtendedFloatingActionButton.Icon.Primary"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Button" />
+                        android:layout_height="50dp"
+                        android:backgroundTint="#C12727"
+                        android:text="This Week"
+                        android:textAlignment="viewStart"
+                        android:textColor="#FFFFFF"
+                        app:strokeColor="#7E3131"
+                        app:strokeWidth="2dp" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/thisWeekRecycler"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="268dp"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
                 </LinearLayout>
 

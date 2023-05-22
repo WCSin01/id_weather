@@ -52,7 +52,8 @@ public class MainInterface implements IObserver, ViewTreeObserver.OnPreDrawListe
                 int nextPrecip = nextPrecipTime(weatherData);
 
                 int currentWeather = weatherData.getHourly().getWeathercode(currentTime);
-                img.setImageResource(Weathercode.toIcon(currentWeather, true));
+                boolean isDay = weatherData.getHourly().getIs_day(currentTime);
+                img.setImageResource(Weathercode.toIcon(currentWeather, isDay));
                 currentWeatherTxt.setText(Weathercode.toText(currentWeather));
                 currentTempTxt.setText(String.format("%s°C", weatherData.getHourly().getTemperature_2m(currentTime)));
                 highTempTxt.setText(String.format("H: %s°C", weatherData.getDaily().getTemperature_2m_max(0)));
@@ -67,7 +68,7 @@ public class MainInterface implements IObserver, ViewTreeObserver.OnPreDrawListe
                 }
                 // if hourly: weatherData.getHourly().getIs_day(...)
                 hasLoaded = true;
-                background.setBackgroundResource(Weathercode.toBackground(currentWeather, true));
+                background.setBackgroundResource(Weathercode.toBackground(currentWeather, isDay));
             }
             else {
                 background.setBackgroundResource(R.drawable.clear_background);

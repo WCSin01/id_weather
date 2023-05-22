@@ -35,11 +35,11 @@ public class RecyclerViewViewHolder extends RecyclerView.ViewHolder implements I
 
     }
 
-    protected void setDetails(int hour, float temperature, int weathercode) {
+    protected void setDetails(int hour, float temperature, int weathercode, boolean isDay) {
 
         timeLabel.setText(String.format("%02d : 00", hour % 24)); // Set time label time
         temperatureLabel.setText(String.format("%.1f °C", temperature));
-        weatherImage.setImageResource(Weathercode.toIcon(weathercode, true));
+        weatherImage.setImageResource(Weathercode.toIcon(weathercode, isDay));
 
 
     }
@@ -60,8 +60,9 @@ public class RecyclerViewViewHolder extends RecyclerView.ViewHolder implements I
 
             int weathercode = weatherData.getHourly().getWeathercode(hour);
             float temperature = weatherData.getHourly().getTemperature_2m(hour);
+            boolean isDay = weatherData.getHourly().getIs_day(hour);
 
-            handler.post(() -> setDetails(hour, temperature, weathercode));
+            handler.post(() -> setDetails(hour, temperature, weathercode, isDay));
 
         }
 

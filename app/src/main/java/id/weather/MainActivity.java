@@ -51,7 +51,15 @@ public class MainActivity extends AppCompatActivity {
         Handler mainHandler = new Handler(Looper.getMainLooper());
 
         Weather weather = Weather.getInstance();
-        MainInterface mainInterface = new MainInterface(mainLayout, findViewById(R.id.mainIcon), findViewById(R.id.currentWeather), findViewById(R.id.currentTemp), findViewById(R.id.highTemp), findViewById(R.id.lowTemp), findViewById(R.id.rainChance), mainHandler);
+        MainInterface mainInterface = new MainInterface(
+                findViewById(R.id.background),
+                findViewById(R.id.mainIcon),
+                findViewById(R.id.currentWeather),
+                findViewById(R.id.currentTemp),
+                findViewById(R.id.highTemp),
+                findViewById(R.id.lowTemp),
+                findViewById(R.id.rainChance),
+                mainHandler);
         weather.attach(mainInterface);
 
       

@@ -7,11 +7,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class RecyclerViewViewHolder extends RecyclerView.ViewHolder {
 
-public RecyclerViewViewHolder(@NonNull View itemView) {
-    super(itemView);
-    // TODO
-}
+    public RecyclerViewViewHolder(@NonNull View itemView) {
+        super(itemView);
+        // TODO
+    }
 
-// TODO
+    // TODO
 
 }

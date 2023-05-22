@@ -48,13 +48,18 @@ public class RecyclerViewViewHolder extends RecyclerView.ViewHolder implements I
 
         this.index = index;
 
+        // need to manually update with most recent data since this holder might have been
+        // created after the last automatic update
+        WeatherData cachedWeatherData = WeatherApi.getCachedWeatherData();
+        if (cachedWeatherData != null) {
+            update(cachedWeatherData);
+        }
     }
 
     @Override
     public void update(WeatherData weatherData) {
 
         if (weatherData.getIsSuccess()) {
-
             int baseHour = LocalDateTime.now().getHour();
             int hour = baseHour + index;
 

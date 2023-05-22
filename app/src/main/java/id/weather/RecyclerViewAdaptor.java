@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class RecyclerViewAdaptor extends RecyclerView.Adapter<RecyclerViewViewHolder> {
     private Handler handler;
 
-    private static final int itemCount = 7;
+    private static final int itemCount = 24;
 
     private final Weather weather;
 
@@ -39,7 +39,7 @@ public class RecyclerViewAdaptor extends RecyclerView.Adapter<RecyclerViewViewHo
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewViewHolder holder, int position) {
-
+        System.out.println(position);
         holder.setIndex(position);
 
     }

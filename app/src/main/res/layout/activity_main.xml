@@ -221,8 +221,8 @@
                         android:id="@+id/settingsButton"
                         android:layout_width="40dp"
                         android:layout_height="48dp"
-                        android:layout_marginStart="1dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
                         android:layout_marginEnd="4dp"
                         android:textAlignment="gravity"
                         app:icon="@drawable/gear"
@@ -238,8 +238,8 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout4"
-                    android:layout_width="177dp"
-                    android:layout_height="108dp"
+                    android:layout_width="215dp"
+                    android:layout_height="109dp"
                     android:layout_marginStart="50dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="50dp"
@@ -275,14 +275,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="16dp"
                         android:textAlignment="center"
                         android:textColor="#202020"
                         android:textSize="40sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.687"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -363,7 +363,7 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/thisWeekRecycler"
                         android:layout_width="match_parent"
-                        android:layout_height="268dp"
+                        android:layout_height="match_parent"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
                 </LinearLayout>
 

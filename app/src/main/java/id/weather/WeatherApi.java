@@ -23,6 +23,8 @@ private static final Gson gsonParser = new GsonBuilder()
                 (JsonDeserializer<LocalDate>) (json, type, jsonDeserializationContext) ->
                         LocalDate.parse(json.getAsJsonPrimitive().getAsString()))
         .create();
+
+private static WeatherData cachedWeatherData;
 private static final OkHttpClient client = new OkHttpClient();
 
 private WeatherApi() {
@@ -42,7 +44,10 @@ public static WeatherData updateWeatherData() throws IOException {
             .build();
 
     try (Response res = client.newCall(request).execute()) {
-        return gsonParser.fromJson(res.body().string(), WeatherData.class);
+        cachedWeatherData = gsonParser.fromJson(res.body().string(), WeatherData.class);
+        return cachedWeatherData;
     }
 }
+
+public static WeatherData getCachedWeatherData() { return cachedWeatherData; }
 }

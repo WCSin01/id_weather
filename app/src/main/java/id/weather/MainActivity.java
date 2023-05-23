@@ -3,6 +3,7 @@ package id.weather;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewOutlineProvider;
 import android.widget.Button;
 import android.os.Handler;
 import android.os.Looper;
@@ -20,6 +21,9 @@ public class MainActivity extends AppCompatActivity {
         // set up dropdown pair for daily/weekly weather
         ViewGroup dailyLayout = findViewById(R.id.dailyLayout);
         ViewGroup weeklyLayout = findViewById(R.id.weeklyLayout);
+
+        dailyLayout.setOutlineProvider(ViewOutlineProvider.BACKGROUND);
+        dailyLayout.setClipToOutline(true);
 
         DropdownPair weatherDropdowns = new DropdownPair(dailyLayout, weeklyLayout);
 
@@ -39,15 +43,23 @@ public class MainActivity extends AppCompatActivity {
 
         // set listeners on buttons to run the animation when pressed
         Button settingsButton = findViewById(R.id.settingsButton);
-        settingsButton.setOnClickListener(v -> settingsDropdown.toggle(500));
+        settingsButton.setOnClickListener(v -> settingsDropdown.toggle(400));
 
         Button mainButton = findViewById(R.id.mainButton);
-        mainButton.setOnClickListener(v -> settingsDropdown.toggle(500));
+        mainButton.setOnClickListener(v -> settingsDropdown.toggle(400));
   
         Handler mainHandler = new Handler(Looper.getMainLooper());
 
         Weather weather = Weather.getInstance();
-        MainInterface mainInterface = new MainInterface(mainLayout, findViewById(R.id.mainIcon), findViewById(R.id.currentWeather), findViewById(R.id.currentTemp), findViewById(R.id.highTemp), findViewById(R.id.lowTemp), findViewById(R.id.rainChance), mainHandler);
+        MainInterface mainInterface = new MainInterface(
+                findViewById(R.id.background),
+                findViewById(R.id.mainIcon),
+                findViewById(R.id.currentTemp),
+                findViewById(R.id.highTemp),
+                findViewById(R.id.lowTemp),
+                findViewById(R.id.rainChance),
+                findViewById(R.id.rainTime),
+                mainHandler);
         weather.attach(mainInterface);
 
       

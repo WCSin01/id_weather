@@ -8,23 +8,28 @@ import android.widget.TextView;
 
 public class MainInterface implements IObserver, ViewTreeObserver.OnPreDrawListener {
     private final ImageView img;
-    private final TextView currentTempTxt;
-    private final TextView currentWeatherTxt;
-    private final TextView highTempTxt;
-    private final TextView lowTempTxt;
-    private final TextView rainChanceTxt;
+    private final TextView currentTempText, highTempText, lowTempText, rainChanceText, rainTimeText;
     private final Handler handler;
     private final View background;
     private boolean hasLoaded;
 
-    public MainInterface(View background, ImageView img, TextView currentWeatherTxt, TextView currentTempTxt, TextView highTempTxt, TextView lowTempTxt, TextView rainChanceTxt, Handler handler) {
+    public MainInterface(
+            View background,
+            ImageView img,
+            TextView currentTempText,
+            TextView highTempText,
+            TextView lowTempText,
+            TextView rainChanceText,
+            TextView rainTimeText,
+            Handler handler
+    ) {
         this.background = background;
         this.img = img;
-        this.currentTempTxt = currentTempTxt;
-        this.currentWeatherTxt = currentWeatherTxt;
-        this.highTempTxt = highTempTxt;
-        this.lowTempTxt = lowTempTxt;
-        this.rainChanceTxt = rainChanceTxt;
+        this.currentTempText = currentTempText;
+        this.highTempText = highTempText;
+        this.lowTempText = lowTempText;
+        this.rainChanceText = rainChanceText;
+        this.rainTimeText = rainTimeText;
 
         this.handler = handler;
 
@@ -52,24 +57,23 @@ public class MainInterface implements IObserver, ViewTreeObserver.OnPreDrawListe
                 int nextPrecip = nextPrecipTime(weatherData);
 
                 int currentWeather = weatherData.getHourly().getWeathercode(currentTime);
-                img.setImageResource(Weathercode.toIcon(currentWeather, true));
-                currentWeatherTxt.setText(Weathercode.toText(currentWeather));
-                currentTempTxt.setText(String.format("%s°C", weatherData.getHourly().getTemperature_2m(currentTime)));
-                highTempTxt.setText(String.format("H: %s°C", weatherData.getDaily().getTemperature_2m_max(0)));
-                lowTempTxt.setText(String.format("L: %s°C", weatherData.getDaily().getTemperature_2m_min(0)));
+                boolean isDay = weatherData.getHourly().getIs_day(currentTime);
+                img.setImageResource(Weathercode.toIcon(currentWeather, isDay));
+                currentTempText.setText(String.format("%s°C", weatherData.getHourly().getTemperature_2m(currentTime)));
+                highTempText.setText(String.format("H: %s°C", weatherData.getDaily().getTemperature_2m_max(0)));
+                lowTempText.setText(String.format("L: %s°C", weatherData.getDaily().getTemperature_2m_min(0)));
 
                 if (nextPrecip < currentTime + 24) {
-                    int nextTime = nextPrecip;
-                    if (nextTime >= 24) {
-                        nextTime -= 24;
-                    }
-                    rainChanceTxt.setText(String.format("%s%% chance of rain at %s:00", Math.round(weatherData.getHourly().getPrecipitation_probability(nextPrecip)), nextTime));
+                    rainChanceText.setText(String.format("%s%% chance of rain at",
+                            Math.round(weatherData.getHourly().getPrecipitation_probability(nextPrecip))));
+                    rainTimeText.setText(String.format("%02d:00", nextPrecip % 24));
                 } else {
-                    rainChanceTxt.setText("No rain expected soon!");
+                    rainChanceText.setText("No rain expected soon!");
+                    rainTimeText.setText(":)");
                 }
                 // if hourly: weatherData.getHourly().getIs_day(...)
                 hasLoaded = true;
-                background.setBackgroundResource(Weathercode.toBackground(currentWeather, true));
+                background.setBackgroundResource(Weathercode.toBackground(currentWeather, isDay));
             }
             else {
                 background.setBackgroundResource(R.drawable.clear_background);

@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 public class MainInterface implements IObserver, ViewTreeObserver.OnPreDrawListener {
     private final ImageView img;
-    private final TextView currentTempText, highTempText, lowTempText, rainChanceText, rainTimeText;
+    private final TextView currentTempText, highTempText, lowTempText, rainChanceText, rainTimeText, warningText;
     private final Handler handler;
     private final View background;
     private boolean hasLoaded;
@@ -21,6 +21,7 @@ public class MainInterface implements IObserver, ViewTreeObserver.OnPreDrawListe
             TextView lowTempText,
             TextView rainChanceText,
             TextView rainTimeText,
+            TextView warningText,
             Handler handler
     ) {
         this.background = background;
@@ -30,6 +31,7 @@ public class MainInterface implements IObserver, ViewTreeObserver.OnPreDrawListe
         this.lowTempText = lowTempText;
         this.rainChanceText = rainChanceText;
         this.rainTimeText = rainTimeText;
+        this.warningText = warningText;
 
         this.handler = handler;
 
@@ -71,6 +73,15 @@ public class MainInterface implements IObserver, ViewTreeObserver.OnPreDrawListe
                     rainChanceText.setText("No rain expected soon!");
                     rainTimeText.setText(":)");
                 }
+
+                // check if the conditions are icy
+                if ((currentWeather >= 71 && currentWeather <= 75) || (currentWeather >= 85 && currentWeather <= 86)) {
+                    warningText.setVisibility(View.VISIBLE);
+                }
+                else {
+                    warningText.setVisibility(View.INVISIBLE);
+                }
+
                 // if hourly: weatherData.getHourly().getIs_day(...)
                 hasLoaded = true;
                 background.setBackgroundResource(Weathercode.toBackground(currentWeather, isDay));

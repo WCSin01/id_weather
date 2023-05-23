@@ -54,11 +54,11 @@ public class MainActivity extends AppCompatActivity {
         MainInterface mainInterface = new MainInterface(
                 findViewById(R.id.background),
                 findViewById(R.id.mainIcon),
-                findViewById(R.id.currentWeather),
                 findViewById(R.id.currentTemp),
                 findViewById(R.id.highTemp),
                 findViewById(R.id.lowTemp),
                 findViewById(R.id.rainChance),
+                findViewById(R.id.rainTime),
                 mainHandler);
         weather.attach(mainInterface);
 

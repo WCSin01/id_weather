@@ -69,13 +69,12 @@
 
                     <ImageView
                         android:id="@+id/mainIcon"
-                        android:layout_width="174dp"
-                        android:layout_height="174dp"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="39dp"
+                        android:layout_width="224dp"
+                        android:layout_height="166dp"
+                        android:layout_marginStart="13dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="15dp"
                         android:contentDescription="Main weather icon"
-                        app:layout_constraintDimensionRatio="H,1:1"
                         app:layout_constraintEnd_toStartOf="@+id/constraintLayout3"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -84,11 +83,13 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/constraintLayout3"
-                        android:layout_width="103dp"
-                        android:layout_height="156dp"
-                        android:layout_marginStart="39dp"
+                        android:layout_width="120dp"
+                        android:layout_height="149dp"
                         android:layout_marginTop="15dp"
-                        android:layout_marginEnd="40dp"
+                        android:layout_marginEnd="15dp"
+                        android:background="@drawable/rounded_rect"
+                        android:backgroundTint="#80FFFFFF"
+                        android:backgroundTintMode="multiply"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHeight_percent="0.9"
                         app:layout_constraintStart_toEndOf="@+id/mainIcon"
@@ -97,9 +98,11 @@
 
                         <View
                             android:id="@+id/SplitLine_hor1"
-                            android:layout_width="118dp"
+                            android:layout_width="0dp"
                             android:layout_height="2dp"
-                            android:background="@color/gray"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:background="#424242"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -112,7 +115,11 @@
                             android:layout_marginStart="32dp"
                             android:layout_marginTop="32dp"
                             android:layout_marginEnd="32dp"
-                            android:layout_marginBottom="32dp"
+                            android:layout_marginBottom="28dp"
+                            android:textAlignment="center"
+                            android:textColor="#202020"
+                            android:textSize="32sp"
+                            android:textStyle="bold"
                             app:layout_constraintBottom_toTopOf="@+id/SplitLine_hor1"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -123,8 +130,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="36dp"
-                            android:layout_marginTop="20dp"
+                            android:layout_marginTop="7dp"
                             android:layout_marginEnd="36dp"
+                            android:textColor="#202020"
+                            android:textSize="18sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/SplitLine_hor1" />
@@ -137,6 +146,8 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="36dp"
                             android:layout_marginBottom="20dp"
+                            android:textColor="#202020"
+                            android:textSize="18sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.571"
@@ -144,20 +155,33 @@
                             app:layout_constraintTop_toBottomOf="@+id/highTemp" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <TextView
-                        android:id="@+id/currentWeather"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="@+id/mainIcon"
-                        app:layout_constraintStart_toStartOf="@+id/mainIcon" />
+                    <Button
+                        android:id="@+id/settingsButton"
+                        android:layout_width="40dp"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="1dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="4dp"
+                        android:textAlignment="gravity"
+                        app:icon="@drawable/gear"
+                        app:iconGravity="textEnd"
+                        app:iconPadding="0dp"
+                        app:iconSize="20dp"
+                        app:layout_constraintEnd_toStartOf="@+id/mainIcon"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout4"
-                    android:layout_width="314dp"
-                    android:layout_height="139dp"
+                    android:layout_width="182dp"
+                    android:layout_height="103dp"
                     android:layout_marginTop="16dp"
+                    android:background="@drawable/rounded_rect"
+                    android:backgroundTint="#80FFFFFF"
+                    android:backgroundTintMode="multiply"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHeight_percent="0.5"
                     app:layout_constraintStart_toStartOf="parent"
@@ -166,27 +190,39 @@
 
                     <TextView
                         android:id="@+id/rainChance"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="133dp"
-                        android:layout_marginTop="34dp"
-                        android:layout_marginEnd="133dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <Button
-                        android:id="@+id/settingsButton"
-                        android:layout_width="122dp"
-                        android:layout_height="0dp"
-                        android:layout_marginStart="50dp"
-                        android:layout_marginEnd="50dp"
-                        android:layout_marginBottom="15dp"
-                        android:text="Settings"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="30dp"
+                        android:textAlignment="center"
+                        android:textColor="#202020"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.75"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <TextView
+                        android:id="@+id/rainTime"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:textAlignment="center"
+                        android:textColor="#202020"
+                        android:textSize="40sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.687"
                         app:layout_constraintStart_toStartOf="parent" />
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 

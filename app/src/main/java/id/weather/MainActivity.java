@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 findViewById(R.id.lowTemp),
                 findViewById(R.id.rainChance),
                 findViewById(R.id.rainTime),
+                findViewById(R.id.warningText),
                 mainHandler);
         weather.attach(mainInterface);
 

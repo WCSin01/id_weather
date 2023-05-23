@@ -38,7 +38,7 @@ public class RecyclerViewViewHolder extends RecyclerView.ViewHolder implements I
 
         timeLabel.setText(String.format("%02d : 00", hour % 24)); // Set time label time
         temperatureLabel.setText(String.format("%.1f °C", temperature));
-        bikeImage.setImageResource(weathercode >= 51 && weathercode <= 67 ? R.drawable.umbrella : R.drawable.bike );
+        bikeImage.setImageResource(weathercode >= 51 && weathercode <= 86 ? R.drawable.umbrella : R.drawable.bike );
         weatherImage.setImageResource(Weathercode.toIcon(weathercode, isDay));
 
 

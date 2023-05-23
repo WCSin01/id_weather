@@ -241,7 +241,7 @@
                     android:layout_width="215dp"
                     android:layout_height="109dp"
                     android:layout_marginStart="50dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="50dp"
                     android:background="@drawable/rounded_rect"
                     android:backgroundTint="#80FFFFFF"
@@ -286,6 +286,24 @@
                         app:layout_constraintStart_toStartOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/warningText"
+                    android:layout_width="278dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="91dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="91dp"
+                    android:background="@drawable/warning"
+                    android:elegantTextHeight="true"
+                    android:text="WARNING: Icy Roads"
+                    android:textAlignment="center"
+                    android:textColor="#202020"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout4" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

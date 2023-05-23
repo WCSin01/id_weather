@@ -4,6 +4,8 @@
 
 To use the `id_weather` application, follow these steps:
 
+Either install the `weather-app.apk` file on an Android device, or, to install a development copy manually:
+
 1. Download Android Studio for your operating system:
    - For Mac: [Download Android Studio for Mac](https://developer.android.com/studio#downloads)
    - For Windows: [Download Android Studio for Windows](https://developer.android.com/studio#downloads)

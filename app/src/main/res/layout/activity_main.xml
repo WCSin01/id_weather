@@ -43,6 +43,7 @@
                         android:layout_height="32dp"
                         android:layout_weight="1"
                         android:text="Allow Notifications"
+                        android:textColor="#202020"
                         android:textSize="20sp" />
 
                     <ToggleButton
@@ -69,6 +70,7 @@
                     android:layout_height="47dp"
                     android:elegantTextHeight="true"
                     android:text="(more can be added if needed)"
+                    android:textColor="#202020"
                     android:textSize="16sp" />
             </LinearLayout>
 

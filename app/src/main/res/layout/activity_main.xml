@@ -9,24 +9,84 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteY="133dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/settingsLayout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="#48CC23"
+            android:background="#C8C8C8"
             tools:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="691dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="61dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="122dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1"
+                        android:text="Allow Notifications"
+                        android:textSize="20sp" />
+
+                    <ToggleButton
+                        android:id="@+id/toggleButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:checked="true"
+                        android:text="ToggleButton"
+                        android:textOff="NO"
+                        android:textOn="YES" />
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/view3"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#424242" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="47dp"
+                    android:elegantTextHeight="true"
+                    android:text="(more can be added if needed)"
+                    android:textSize="16sp" />
+            </LinearLayout>
 
             <Button
                 android:id="@+id/mainButton"
-                android:layout_width="183dp"
-                android:layout_height="94dp"
-                android:layout_marginBottom="384dp"
+                android:layout_width="40dp"
+                android:layout_height="48dp"
+                android:layout_marginBottom="4dp"
                 android:text="Button"
+                app:icon="@drawable/arrow"
+                app:iconGravity="textEnd"
+                app:iconPadding="-10dp"
+                app:iconSize="25dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.019"
                 app:layout_constraintStart_toStartOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -47,7 +107,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout"
-                android:layout_width="379dp"
+                android:layout_width="0dp"
                 android:layout_height="351dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHeight_percent="0.5"
@@ -57,7 +117,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout2"
-                    android:layout_width="371dp"
+                    android:layout_width="0dp"
                     android:layout_height="183dp"
                     android:layout_marginEnd="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -83,7 +143,7 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/constraintLayout3"
-                        android:layout_width="120dp"
+                        android:layout_width="0dp"
                         android:layout_height="149dp"
                         android:layout_marginTop="15dp"
                         android:layout_marginEnd="15dp"
@@ -176,9 +236,11 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout4"
-                    android:layout_width="182dp"
-                    android:layout_height="103dp"
+                    android:layout_width="177dp"
+                    android:layout_height="108dp"
+                    android:layout_marginStart="50dp"
                     android:layout_marginTop="16dp"
+                    android:layout_marginEnd="50dp"
                     android:background="@drawable/rounded_rect"
                     android:backgroundTint="#80FFFFFF"
                     android:backgroundTintMode="multiply"
@@ -228,10 +290,12 @@
 
             <RelativeLayout
                 android:id="@+id/dropdownLayout"
-                android:layout_width="361dp"
-                android:layout_height="388dp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
+                android:layout_marginBottom="50dp"
+                app:layout_constraintBottom_toBottomOf="@+id/background"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
@@ -240,7 +304,9 @@
                 <LinearLayout
                     android:id="@+id/dailyLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="321dp"
+                    android:layout_height="309dp"
+                    android:layout_above="@+id/weeklyLayout"
+                    android:layout_marginBottom="23dp"
                     android:background="@drawable/rounded_rect"
                     android:backgroundTint="#2962A8"
                     android:backgroundTintMode="add"

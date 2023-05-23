@@ -69,7 +69,7 @@ public class MainInterface implements IObserver, ViewTreeObserver.OnPreDrawListe
                     rainTimeText.setText(String.format("%02d:00", nextPrecip % 24));
                 } else {
                     rainChanceText.setText("No rain expected soon!");
-                    rainTimeText.setText("");
+                    rainTimeText.setText(":)");
                 }
                 // if hourly: weatherData.getHourly().getIs_day(...)
                 hasLoaded = true;

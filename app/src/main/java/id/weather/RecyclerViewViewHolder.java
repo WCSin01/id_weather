@@ -1,7 +1,6 @@
 package id.weather;
 
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -10,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 public class RecyclerViewViewHolder extends RecyclerView.ViewHolder implements IObserver {
 
@@ -20,7 +18,7 @@ public class RecyclerViewViewHolder extends RecyclerView.ViewHolder implements I
 
     protected final TextView timeLabel;
     protected final TextView temperatureLabel;
-    protected final ImageView weatherImage;
+    protected final ImageView bikeImage, weatherImage;
 
     public RecyclerViewViewHolder(@NonNull View itemView, int index, Handler handler) {
 
@@ -31,6 +29,7 @@ public class RecyclerViewViewHolder extends RecyclerView.ViewHolder implements I
 
         timeLabel = itemView.findViewById(R.id.time_label);
         temperatureLabel = itemView.findViewById(R.id.temperature_label);
+        bikeImage = itemView.findViewById(R.id.bikeImage);
         weatherImage = itemView.findViewById(R.id.weather_image);
 
     }
@@ -39,6 +38,7 @@ public class RecyclerViewViewHolder extends RecyclerView.ViewHolder implements I
 
         timeLabel.setText(String.format("%02d : 00", hour % 24)); // Set time label time
         temperatureLabel.setText(String.format("%.1f °C", temperature));
+        bikeImage.setImageResource(weathercode >= 51 && weathercode <= 67 ? R.drawable.umbrella : R.drawable.bike );
         weatherImage.setImageResource(Weathercode.toIcon(weathercode, isDay));
 
 
